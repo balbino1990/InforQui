@@ -13,13 +13,13 @@ using System.Web.Mvc;
 namespace InforQui_17933.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class ContaUtilizadoresController : Controller
     {
-        public AccountController()
+        public ContaUtilizadoresController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public ContaUtilizadoresController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -57,6 +57,58 @@ namespace InforQui_17933.Controllers
             }
             private set { _signInManager = value; }
         }
+
+        //**********************************************************************************************
+        //      A registração dos utilizadores
+        //*********************************************************************************************
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(Registo model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Os atributos dos utilizadores
+
+                var user = new ApplicationUser {
+                    UserName = model.Nome,
+                    Email = model.Email,
+                    PasswordHash = model.Password,
+                    Morada = model.Morada,
+                    CodPostal = model.CodPostal,
+                    Contacto = model.Contacto,
+                    NIF = model.NIF,
+                    Imagem = model.Imagem
+
+
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    ViewBag.Link = callbackUrl;
+                    return View("DisplayEmail");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
 
         //
         // POST: /Account/Login
@@ -132,40 +184,7 @@ namespace InforQui_17933.Controllers
             }
         }
 
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
-                }
-                AddErrors(result);
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
-
+       
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]

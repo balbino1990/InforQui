@@ -226,7 +226,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContaUtilizadoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -235,7 +235,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContaUtilizadores.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\Compras.cs" />
     <Compile Include="Models\Compras_Produtos.cs" />
@@ -277,19 +277,19 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\DisplayEmail.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\ContaUtilizadores\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\ContaUtilizadores\VerifyCode.cshtml" />
+    <Content Include="Views\ContaUtilizadores\SendCode.cshtml" />
+    <Content Include="Views\ContaUtilizadores\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\ContaUtilizadores\ResetPassword.cshtml" />
+    <Content Include="Views\ContaUtilizadores\Register.cshtml" />
+    <Content Include="Views\ContaUtilizadores\Login.cshtml" />
+    <Content Include="Views\ContaUtilizadores\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\ContaUtilizadores\ForgotPassword.cshtml" />
+    <Content Include="Views\ContaUtilizadores\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\ContaUtilizadores\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\ContaUtilizadores\DisplayEmail.cshtml" />
+    <Content Include="Views\ContaUtilizadores\ConfirmEmail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

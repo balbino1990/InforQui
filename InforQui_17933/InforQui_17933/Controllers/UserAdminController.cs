@@ -86,7 +86,7 @@ namespace InforQui_17933.Controllers
         //
         // POST: /Users/Create
         [HttpPost]
-        public async Task<ActionResult> Create(RegisterViewModel userViewModel, params string[] selectedRoles)
+        public async Task<ActionResult> Create(Registo userViewModel, params string[] selectedRoles)
         {
             if (ModelState.IsValid)
             {

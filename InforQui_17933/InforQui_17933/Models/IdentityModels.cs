@@ -10,6 +10,26 @@ namespace InforQui_17933.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+
+        //***********************************************************************
+        //      Os dados do utilizador que está a referenciar a classe 'registo'
+        //***********************************************************************
+
+        //O Nome do utilizador
+        
+        public string Nome { get; set; }
+
+        public string Morada { get; set; }
+
+        public string CodPostal { get; set; }
+
+        public int NIF { get; set; }
+
+        public string Contacto { get; set; }
+
+        public string Imagem { get; set; }
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
