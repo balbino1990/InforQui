@@ -227,6 +227,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\ContaUtilizadoresController.cs" />
+    <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -290,6 +291,11 @@
     <Content Include="Views\ContaUtilizadores\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\ContaUtilizadores\DisplayEmail.cshtml" />
     <Content Include="Views\ContaUtilizadores\ConfirmEmail.cshtml" />
+    <Content Include="Views\Funcionarios\Adicionar.cshtml" />
+    <Content Include="Views\Funcionarios\Atualizar.cshtml" />
+    <Content Include="Views\Funcionarios\Detalhes.cshtml" />
+    <Content Include="Views\Funcionarios\Index.cshtml" />
+    <Content Include="Views\Funcionarios\Remover.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
