@@ -226,6 +226,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ContaUtilizadoresController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -296,6 +297,8 @@
     <Content Include="Views\Funcionarios\Detalhes.cshtml" />
     <Content Include="Views\Funcionarios\Index.cshtml" />
     <Content Include="Views\Funcionarios\Remover.cshtml" />
+    <Content Include="Views\Clientes\Detalhes.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
