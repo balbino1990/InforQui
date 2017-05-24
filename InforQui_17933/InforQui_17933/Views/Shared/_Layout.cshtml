@@ -10,35 +10,52 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
-                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+        <div class="navbar-fixed-top">
+            <table style="left:20%; position:absolute">
+                <tr>
+                    <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
+                        <img src="~/Content/Imagens/Home.png" style="width:50px; height:40px; cursor:pointer">
+                        @Html.ActionLink("InforQui", "Index", "Home")
+                    </td>
+
+                    <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
+                        <img src="~/Content/Imagens/utilizador.png" style="width:50px; height:40px; cursor:pointer">
+                        @Html.ActionLink("Utilizador", "Utilizador", "Home")
+                    </td>
+
+                    <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
+                        <img src="~/Content/Imagens/sobre.png" style="width:50px; height:40px; cursor:pointer">
+                        @Html.ActionLink("Sobre", "Sobre", "Home")
+                    </td>
+
+                    <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
+                        <img src="~/Content/Imagens/contact.png" style="width:50px; height:40px; cursor:pointer">
+                        @Html.ActionLink("Contacto", "Contactos", "Home")
+                    </td>
+                    <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
+                        <img src="~/Content/Imagens/compra.png" style="width:50px; height:40px; cursor:pointer">
+                        @Html.ActionLink("Funcionarios", "Index", "Funcionarios")
+                    </td>
+                </tr>
+            </table>
         </div>
-    </div>
+        <br />
+
+        <!--Adicionar o 'shopping cart' para a loja-->
+        <div style="position:fixed; left:70%; color:#00ff90;">
+            <img src="~/Content/Imagens/Cesto.png" style="width:50px; height:40px; cursor:pointer">
+            @Html.ActionLink("O meu cesto", "Index", "Compra")
+        </div>
+
+      @Html.Partial("_LoginPartial")
+       
+    </div>   
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - InforQui coorporation</p>
         </footer>
     </div>
 

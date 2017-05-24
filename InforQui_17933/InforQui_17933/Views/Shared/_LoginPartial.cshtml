@@ -5,15 +5,24 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink("Bem-vindo " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
         </ul>
     }
 }
-else {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Registar", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+else
+{
+    <div class="nav navbar-nav navbar-right">
+        <table>
+            <tr>
+                <td>
+                    @Html.ActionLink("Registar", "Registar", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                </td>
+                <td>
+                    @Html.ActionLink("Entrar", "Login", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                </td>
+            </tr>
+        </table>
+    </div>
 }
