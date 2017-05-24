@@ -63,9 +63,9 @@ namespace InforQui_17933.Controllers
         //*********************************************************************************************
 
         //
-        // GET: /Account/Register
+        // GET: /ContaUtilizadores/Registar
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Registar()
         {
             return View();
         }
@@ -75,14 +75,14 @@ namespace InforQui_17933.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(Registo model)
+        public async Task<ActionResult> Registar(Registo model)
         {
             if (ModelState.IsValid)
             {
                 // Os atributos dos utilizadores
 
                 var user = new ApplicationUser {
-                    UserName = model.Nome,
+                    Nome = model.Nome,
                     Email = model.Email,
                     PasswordHash = model.Password,
                     Morada = model.Morada,
@@ -97,7 +97,7 @@ namespace InforQui_17933.Controllers
                 if (result.Succeeded)
                 {
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    var callbackUrl = Url.Action("ConfirmEmail", "ContaUtilizadores", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     ViewBag.Link = callbackUrl;
                     return View("DisplayEmail");

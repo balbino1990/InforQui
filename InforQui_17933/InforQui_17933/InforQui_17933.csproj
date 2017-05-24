@@ -282,7 +282,7 @@
     <Content Include="Views\ContaUtilizadores\SendCode.cshtml" />
     <Content Include="Views\ContaUtilizadores\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\ContaUtilizadores\ResetPassword.cshtml" />
-    <Content Include="Views\ContaUtilizadores\Register.cshtml" />
+    <Content Include="Views\ContaUtilizadores\Registar.cshtml" />
     <Content Include="Views\ContaUtilizadores\Login.cshtml" />
     <Content Include="Views\ContaUtilizadores\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\ContaUtilizadores\ForgotPassword.cshtml" />

@@ -96,7 +96,8 @@ namespace InforQui_17933.Models
         //A Morada do utilizador
         [Required(ErrorMessage = "O campo {0} é obrigatoria")]
         [Display(Name = "Morada do utilizador")]
-        [RegularExpression("[A-Z][A-ZÁÉÍÓÚÀÈÌÒÙÇaa-záéíóúàèìòùç]+( [A-ZÁÉÍÓÚÀÈÌÒÙÇa-záéíóúàèìòùç0-9])+")]
+        [RegularExpression("[A-Z][A-ZÁÉÍÓÚÀÈÌÒÙÇaa-záéíóúàèìòùç0-9]+( [A-ZÁÉÍÓÚÀÈÌÒÙÇaa-záéíóúàèìòùç0-9])*", 
+                    ErrorMessage = "A morada consistem por uma letra grande no inicio e pode conteru por uma ou mais palavras")]
         public string Morada { get; set; }
 
         // O código postal do utilizador
