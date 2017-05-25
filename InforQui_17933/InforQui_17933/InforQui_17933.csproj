@@ -317,14 +317,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ContaUtilizadores.cs" />
-    <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\Compras.cs" />
-    <Compile Include="Models\Compras_Produtos.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Produtos.cs" />
-    <Compile Include="Models\Utilizadores.cs" />
+    <Compile Include="Controllers\Models\ContaUtilizadores.cs" />
+    <Compile Include="Controllers\Models\AdminViewModel.cs" />
+    <Compile Include="Controllers\Models\Compras.cs" />
+    <Compile Include="Controllers\Models\Compras_Produtos.cs" />
+    <Compile Include="Controllers\Models\IdentityModels.cs" />
+    <Compile Include="Controllers\Models\ManageViewModels.cs" />
+    <Compile Include="Controllers\Models\Produtos.cs" />
+    <Compile Include="Controllers\Models\Utilizadores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

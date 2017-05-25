@@ -64,7 +64,7 @@ namespace InforQui_17933.Controllers
         }
 
         //
-        // POST: /Account/Register
+        // POST: /ContaUtilizadores/Registar
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -266,12 +266,12 @@ namespace InforQui_17933.Controllers
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return RedirectToAction("ResetPasswordConfirmation", "ContaUtilizadores");
             }
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return RedirectToAction("ResetPasswordConfirmation", "ContaUtilizadores");
             }
             AddErrors(result);
             return View();
@@ -293,7 +293,7 @@ namespace InforQui_17933.Controllers
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "ContaUtilizadores", new { ReturnUrl = returnUrl }));
         }
 
         //
