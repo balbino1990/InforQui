@@ -276,9 +276,6 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\ContaUtilizadores\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\ContaUtilizadores\VerifyCode.cshtml" />
     <Content Include="Views\ContaUtilizadores\SendCode.cshtml" />
@@ -299,6 +296,10 @@
     <Content Include="Views\Funcionarios\Remover.cshtml" />
     <Content Include="Views\Clientes\Detalhes.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Home\Contactos.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Sobre.cshtml" />
+    <Content Include="Views\Home\Utilizador.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
