@@ -296,6 +296,10 @@
     <Content Include="Views\Funcionarios\Remover.cshtml" />
     <Content Include="Views\Clientes\Detalhes.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Home\Contactos.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Sobre.cshtml" />
+    <Content Include="Views\Home\Utilizador.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
