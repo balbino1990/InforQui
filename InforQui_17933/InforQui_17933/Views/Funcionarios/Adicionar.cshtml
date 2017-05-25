@@ -1,12 +1,12 @@
 ﻿@model InforQui_17933.Models.Produtos
 
 @{
-    ViewBag.Title = "Adicionar";
+    ViewBag.Title = "Adicionar Produtos";
 }
 
 <h2>Adicionar os Produtos na loja</h2>
 
-@using (Html.BeginForm("Adicionar", "Produtos",FormMethod.Post,
+@using (Html.BeginForm("Adicionar", "Funcionarios",FormMethod.Post,
                                           new { enctype = "multipart/form-data" }))
 {
                 @Html.AntiForgeryToken()
@@ -32,14 +32,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label col-md-2" })
             
             <div class="editor-field">
@@ -50,6 +42,14 @@
                 @Html.EditorFor(model => model.Imagem, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
             </div>*@
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Preco, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Preco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
+            </div>
         </div>
 
         <div class="form-group">
