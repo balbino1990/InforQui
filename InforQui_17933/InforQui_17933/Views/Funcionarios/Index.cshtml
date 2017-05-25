@@ -1,0 +1,63 @@
+﻿@model IEnumerable<InforQui_17933.Models.Produtos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Adicionar novo produto", "Adicionar")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marca)
+        </td>
+        <td>
+            <img src="~/Content/Imagens/@Html.DisplayFor(model =>item.Imagem)" style="height:200px;width:200px;" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+           @Html.DisplayFor(modelItem => item.Preco)
+        </td>
+        <td>
+            @Html.ActionLink("Atualizar", "Atualizar", new { id=item.ProdutosID }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.ProdutosID }) |
+            @Html.ActionLink("Remover", "Remover", new { id=item.ProdutosID })
+        </td>
+    </tr>
+}
+
+</table>

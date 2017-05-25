@@ -4,29 +4,24 @@ namespace InforQui_17933.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home/Index
         public ActionResult Index()
         {
             return View();
         }
 
-        //GET: Home/Utilizador
-        public ActionResult Utilizador()
+        [Authorize]
+        public ActionResult About()
         {
+            ViewBag.Message = "Your app description page.";
+
             return View();
         }
 
-        //GET: Home/Sobre
-        public ActionResult Sobre()
+        public ActionResult Contact()
         {
+            ViewBag.Message = "Your contact page.";
+
             return View();
         }
-
-        //GET: Home/Contactos
-        public ActionResult Contactos()
-        {
-            return View();
-        }
-
     }
 }

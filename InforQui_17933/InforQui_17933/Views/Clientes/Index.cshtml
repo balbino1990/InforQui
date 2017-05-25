@@ -1,0 +1,36 @@
+﻿@model IEnumerable<InforQui_17933.Models.Produtos>
+
+@{
+    ViewBag.Title = "Index do cliente";
+}
+
+
+
+
+@using (Html.BeginForm(FormMethod.Get))
+{
+    <div style="position:fixed; left:20%">
+         @Html.TextBox("Procurar")
+        <input style="background-color:#00ff90; color:#ffffff; "type="submit" value="Procurar" />
+    </div>
+}
+
+<br /><br />
+@foreach (var item in Model)
+{
+    <div clas="produtoCliente"style="left:20px; cursor:pointer; float:left; padding:2px; margin:5px;">
+        @* Vai referenciar para o url com o 'Action', view 'Details' e o controller 'AreaCliente'*@
+        <a href='@Url.Action("Detalhes", "AreaCliente", new { id = item.ProdutosID })'>
+        @*Vai mostrar cada url com a imagem dos produtos*@
+        <img src="~/Content/Imagens/@Html.DisplayFor(model => item.Imagem)" style="height:200px;width:200px;" /><br />
+        
+            <div style="background-color:#00ff90; color:#ffffff; text-align:center;">
+                @Html.DisplayFor(modelItem => item.Preco) <br />
+                @Html.DisplayFor(modelItem => item.Nome)
+            </div>
+    </a>
+    </div>
+ }
+
+
+
