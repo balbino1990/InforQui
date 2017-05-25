@@ -20,7 +20,7 @@
 {
     <div clas="produtoCliente"style="left:20px; cursor:pointer; float:left; padding:2px; margin:5px;">
         @* Vai referenciar para o url com o 'Action', view 'Details' e o controller 'AreaCliente'*@
-        <a href='@Url.Action("Detalhes", "AreaCliente", new { id = item.ProdutosID })'>
+        <a href='@Url.Action("Detalhes", "Clientes", new { id = item.ProdutoID })'>
         @*Vai mostrar cada url com a imagem dos produtos*@
         <img src="~/Content/Imagens/@Html.DisplayFor(model => item.Imagem)" style="height:200px;width:200px;" /><br />
         
