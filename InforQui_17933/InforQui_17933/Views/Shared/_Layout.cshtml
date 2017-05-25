@@ -9,8 +9,6 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-
         <div class="navbar-fixed-top">
             <table style="left:20%; position:absolute">
                 <tr>
@@ -49,15 +47,35 @@
         </div>
 
       @Html.Partial("_LoginPartial")
-       
-    </div>   
+         
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - InforQui coorporation</p>
-        </footer>
     </div>
+
+    <br /><br />
+    <div style="top:85%; position:relative">
+        <hr style="background-color:#00ffff; height:50px; width:1250px; " />
+
+        <div style="left:10%; position:absolute">
+            <p><b>&copy; @DateTime.Now.Year - InforQui coorporation</b></p>
+        </div>
+        <div style="left:40%; position:absolute; ">
+            <div style="font-family:Algerian">Siga-nos nas redes sociais</div>
+        </div><br />
+        <div style="left:40%; position:absolute;">
+            <a href="https://www.facebook.com/InforQui-1924713121076966/" target="_blank"><img src="~/Content/Imagens/face.png" style="height:30px; width:30px;" /></a>
+        </div>
+        <div style="left:44%; position:absolute;">
+            <a href="https://www.youtube.com/channel/UCYJ4Xd6Nsq1jeC2MFkEBnNQ" target="_blank"><img src="~/Content/Imagens/YouTube.png" style="height:30px; width:40px;" /></a>
+        </div>
+        <div style="left:48%; position:absolute; ">
+            <a href="https://www.instagram.com/inforqui6049/" target="_blank"><img src="~/Content/Imagens/instagram.png" style="height:30px; width:30px;" /></a>
+        </div>
+        <div style="left:60%; position:absolute;">
+            <img src="~/Content/Imagens/InforQui1.png" style="height:30px; width:30px;" title="Messenger InforQui" />
+        </div>
+    </div>
+    <br /><br />
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -245,6 +245,7 @@
     <Content Include="Content\Imagens\Eritorbato_Sodio.jpeg" />
     <Content Include="Content\Imagens\Erlenmeyer.jpg" />
     <Content Include="Content\Imagens\estante_para_os_tubos.jpg" />
+    <Content Include="Content\Imagens\face.png" />
     <Content Include="Content\Imagens\Funcionaro.png" />
     <Content Include="Content\Imagens\funil_de_bucher.jpg" />
     <Content Include="Content\Imagens\funil_de_separacao.Jpeg" />
@@ -252,6 +253,7 @@
     <Content Include="Content\Imagens\Home.png" />
     <Content Include="Content\Imagens\Horario_segundo_semestre.png" />
     <Content Include="Content\Imagens\InforQui1.png" />
+    <Content Include="Content\Imagens\instagram.png" />
     <Content Include="Content\Imagens\jarra_de_vidro.jpg" />
     <Content Include="Content\Imagens\Kitassato.JPG" />
     <Content Include="Content\Imagens\mais.jpg" />
@@ -269,11 +271,14 @@
     <Content Include="Content\Imagens\sobre.png" />
     <Content Include="Content\Imagens\suporte_de-burreta.jpg" />
     <Content Include="Content\Imagens\tela_de_amianto.jpg" />
+    <Content Include="Content\Imagens\Terbaikk.jpg" />
     <Content Include="Content\Imagens\torre de eiffel.jpg" />
     <Content Include="Content\Imagens\tripe_de_ferro.jpg" />
     <Content Include="Content\Imagens\tttttt.jpg" />
     <Content Include="Content\Imagens\tubos_de_ensaio.jpg" />
     <Content Include="Content\Imagens\utilizador.png" />
+    <Content Include="Content\Imagens\yesus.jpg" />
+    <Content Include="Content\Imagens\Youtube.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -293,7 +298,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

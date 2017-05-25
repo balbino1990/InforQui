@@ -1,27 +1,28 @@
 ﻿using System.Web.Mvc;
+using InforQui_17933.Models;
+
 
 namespace InforQui_17933.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        //GET: Home/Utilizador
+        public ActionResult Utilizador()
         {
             return View();
         }
 
-        [Authorize]
-        public ActionResult About()
+        //GET: Home/Sobre
+        public ActionResult Sobre()
         {
-            ViewBag.Message = "Your app description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        //GET: Home/Contactos
+        public ActionResult Contactos()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
     }
 }
