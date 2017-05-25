@@ -18,17 +18,15 @@
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Marca)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Imagem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Preco)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+       
         <th></th>
     </tr>
 
@@ -41,21 +39,18 @@
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Marca)
+            <img src="~/Content/Imagens/@Html.DisplayFor(model =>item.Imagem)" style="height:200px;width:200px;" />
         </td>
         <td>
-            <img src="~/Content/Imagens/@Html.DisplayFor(model =>item.Imagem)" style="height:200px;width:200px;" />
+            @Html.DisplayFor(modelItem => item.Preco)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Tipo)
         </td>
         <td>
-           @Html.DisplayFor(modelItem => item.Preco)
-        </td>
-        <td>
-            @Html.ActionLink("Atualizar", "Atualizar", new { id=item.ProdutosID }) |
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.ProdutosID }) |
-            @Html.ActionLink("Remover", "Remover", new { id=item.ProdutosID })
+            @Html.ActionLink("Atualizar", "Atualizar", new { id=item.ProdutoID }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.ProdutoID }) |
+            @Html.ActionLink("Remover", "Remover", new { id=item.ProdutoID })
         </td>
     </tr>
 }
