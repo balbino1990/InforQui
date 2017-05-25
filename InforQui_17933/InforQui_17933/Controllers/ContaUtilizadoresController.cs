@@ -38,15 +38,7 @@ namespace InforQui_17933.Controllers
             }
         }
 
-        //
-        // GET: /Account/Login
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
+       
         private ApplicationSignInManager _signInManager;
 
         public ApplicationSignInManager SignInManager
@@ -57,6 +49,7 @@ namespace InforQui_17933.Controllers
             }
             private set { _signInManager = value; }
         }
+
 
         //**********************************************************************************************
         //      A registração dos utilizadores
@@ -109,6 +102,15 @@ namespace InforQui_17933.Controllers
             return View(model);
         }
 
+
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
 
         //
         // POST: /Account/Login
