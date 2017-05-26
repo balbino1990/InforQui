@@ -3,41 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="~/Content/Imagens/InforQui1.png"/>
+    <link rel="icon" type="image/png" href="~/Content/Imagens/InforQui1.png" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar-fixed-top">
-        <table style="left:20%; position:absolute">
-            <tr>
-                <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
-                    <img src="~/Content/Imagens/Home.png" style="width:50px; height:40px; cursor:pointer">
-                    @Html.ActionLink("InforQui", "Index", "Clientes")
-                </td>
-
-                <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="~/Content/Imagens/Home.png" style="width:50px; height:40px; cursor:pointer">
+                @Html.ActionLink("InforQui", "Index", "Clientes", null, new { @class = "navbar-brand" })
+            </div>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
                     <img src="~/Content/Imagens/utilizador.png" style="width:50px; height:40px; cursor:pointer">
                     @Html.ActionLink("Utilizador", "Utilizador", "Home")
-                </td>
-
-                <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
+                </li>
+                <li>
                     <img src="~/Content/Imagens/sobre.png" style="width:50px; height:40px; cursor:pointer">
                     @Html.ActionLink("Sobre", "Sobre", "Home")
-                </td>
-
-                <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
+                </li>
+                <li>
                     <img src="~/Content/Imagens/contact.png" style="width:50px; height:40px; cursor:pointer">
                     @Html.ActionLink("Contacto", "Contactos", "Home")
-                </td>
-                <td style="border:2px solid #ffffff; padding:4px; background-color:#00ffff">
-                    <img src="~/Content/Imagens/compra.png" style="width:50px; height:40px; cursor:pointer">
+                </li>
+                <li>
+                    <img src="~/Content/Imagens/Funcionaro.png" style="width:50px; height:40px; cursor:pointer">
                     @Html.ActionLink("Funcionarios", "Index", "Funcionarios")
-                </td>
-            </tr>
-        </table>
+                </li>
+            </ul>
+        </div>
     </div>
+            
     <br />
 
     <!--Adicionar o 'shopping cart' para a loja-->
