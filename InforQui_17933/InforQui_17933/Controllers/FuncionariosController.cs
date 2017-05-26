@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using InforQui_17933.Models;
 
 namespace InforQui_17933.Controllers
@@ -15,11 +16,17 @@ namespace InforQui_17933.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Funcionarios/Index
-        public ActionResult Index()
+        public ActionResult Index(int? pagina)
         {
-            //vai retornar para o 'VIEW', a lista da tabela 'Produtos' na base de dados 'InforQui'
+            
+            //#########################################################
+            //#####Fazer a paginação dos produtos######################
+            int tamanhoPagina = 5;
+            int numeroPagina = pagina ?? 1;     // o número da pagina for nulo, vamos inserir um
+
+            //vai retornar para o 'VIEW', a lista da tabela 'Produtos' na base de dados 'ApplicationDbContext'
             //e vai ordenar por o 'Nome' do produto
-            return View(db.Produtos.ToList().OrderBy(d => d.Nome));
+            return View(db.Produtos.OrderBy(p => p.Nome).ToPagedList(numeroPagina, tamanhoPagina));
         }
 
         // GET: Funcionarios/Detalhes/5

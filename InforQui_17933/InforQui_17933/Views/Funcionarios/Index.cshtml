@@ -1,58 +1,67 @@
-﻿@model IEnumerable<InforQui_17933.Models.Produtos>
+﻿@model PagedList.IPagedList<InforQui_17933.Models.Produtos>
+    @using PagedList.Mvc;
+    @{
+        ViewBag.Title = "Index";
+    }
 
-@{
-    ViewBag.Title = "Index";
-}
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-<h2>Index</h2>
+    <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Adicionar novo produto", "Adicionar")
-</p>
-<table class="table" border="1">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Preco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </th>
-       
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Adicionar novo produto", "Adicionar")
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayName("Nome do Produto")
+            </th>
+            <th>
+                @Html.DisplayName("Descrição do produto")
+            </th>
+            <th>
+                @Html.DisplayName("Imagem do produto")
+            </th>
+            <th>
+                @Html.DisplayName("Preço do produto")
+            </th>
+            <th>
+                @Html.DisplayName("Tipo do produto")
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            <img src="~/Content/Imagens/@Html.DisplayFor(model =>item.Imagem)" style="height:200px;width:200px;" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo)
-        </td>
-        <td>
-            @Html.ActionLink("Atualizar", "Atualizar", new { id=item.ProdutoID }) |
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.ProdutoID }) |
-            @Html.ActionLink("Remover", "Remover", new { id=item.ProdutoID })
-        </td>
-    </tr>
-}
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    <img src="~/Content/Imagens/@Html.DisplayFor(model =>item.Imagem)" style="height:200px;width:200px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td>
+                    @Html.ActionLink("Atualizar", "Atualizar", new { id = item.ProdutoID }) |
+                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.ProdutoID }) |
+                    @Html.ActionLink("Remover", "Remover", new { id = item.ProdutoID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br />
+    <div style="top:123%; position:absolute;">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { pagina = page }))
+
+    </div>
