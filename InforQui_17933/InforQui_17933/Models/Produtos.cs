@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -17,6 +18,7 @@ namespace InforQui_17933.Models
         //############ Os atributos da tabela Produtos################
         //O identificador da tabela Produtos
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]  //quando usado, inibe o atributo de ser Auto Number
         [Display(Name = "Identifcador do Produto")]
         public int ProdutoID { get; set; }
 
