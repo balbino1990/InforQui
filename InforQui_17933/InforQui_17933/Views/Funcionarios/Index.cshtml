@@ -11,21 +11,21 @@
     <p>
         @Html.ActionLink("Adicionar novo produto", "Adicionar")
     </p>
-    <table class="table" border="1">
-        <tr>
-            <th>
+    <table style="border:2px solid #00ffff;">
+        <tr style="border: 2px solid #00ffff;">
+            <th  style="border: 2px solid #00ffff;">
                 @Html.DisplayName("Nome do Produto")
             </th>
-            <th>
+            <th  style="border: 2px solid #00ffff;">
                 @Html.DisplayName("Descrição do produto")
             </th>
-            <th>
+            <th  style="border: 2px solid #00ffff;">
                 @Html.DisplayName("Imagem do produto")
             </th>
-            <th>
+            <th  style="border: 2px solid #00ffff;">
                 @Html.DisplayName("Preço do produto")
             </th>
-            <th>
+            <th  style="border: 2px solid #00ffff;">
                 @Html.DisplayName("Tipo do produto")
             </th>
 
@@ -35,33 +35,32 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td style="border: 2px solid #00ffff;">
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
-                <td>
+                <td  style="border: 2px solid #00ffff;">
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </td>
-                <td>
-                    <img src="~/Content/Imagens/@Html.DisplayFor(model =>item.Imagem)" style="height:200px;width:200px;" />
+                <td  style="border: 2px solid #00ffff;">
+                    <a href='@Url.Action("Detalhes", "Funcionarios", new { id = item.ProdutoID })'>
+                        <img src="~/Content/Imagens/@Html.DisplayFor(model =>item.Imagem)" style="height:200px;width:200px;" />
+                    </a>
                 </td>
-                <td>
+                <td  style="border: 2px solid #00ffff;">
                     @Html.DisplayFor(modelItem => item.Preco)
                 </td>
-                <td>
+                <td  style="border: 2px solid #00ffff;">
                     @Html.DisplayFor(modelItem => item.Tipo)
-                </td>
-                <td>
-                    @Html.ActionLink("Atualizar", "Atualizar", new { id = item.ProdutoID }) |
-                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.ProdutoID }) |
-                    @Html.ActionLink("Remover", "Remover", new { id = item.ProdutoID })
                 </td>
             </tr>
         }
 
+        
+        <tr>
+            <td>
+               @Html.PagedListPager(Model, page => Url.Action("Index", new { pagina = page }))
+            </td>
+        </tr>
     </table>
 
-    <br />
-    <div style="top:123%; position:absolute;">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { pagina = page }))
-
-    </div>
+    
