@@ -13,14 +13,18 @@
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            <img src="~/Content/Imagens/registar.png" style="width:50px; height:40px; cursor:pointer">
-            @Html.ActionLink("Registar", "Registar", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "registerLink" })
-        </li>
-        <li>
-            <img src="~/Content/Imagens/entrar.png" style="width:50px; height:40px; cursor:pointer">
-            @Html.ActionLink("Entrar", "Login", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "loginLink" })
-        </li>
-    </ul>
+    <div  class="nav navbar-nav navbar-right">
+        <table style="left:80%; position:absolute">
+            <tr>
+                <td>
+                    <img src="~/Content/Imagens/registar.png" style="width:50px; height:40px; cursor:pointer">
+                    @Html.ActionLink("Registar", "Registar", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                </td>
+                <td>
+                    <img src="~/Content/Imagens/entrar.png" style="width:50px; height:40px; cursor:pointer">
+                    @Html.ActionLink("Entrar", "Login", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                </td>
+            </tr>
+        </table>
+    </div>
 }
