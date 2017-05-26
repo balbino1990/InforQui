@@ -51,8 +51,13 @@
         </dd>
 
     </dl>
+
+    <br /><br />
+    <div>
+        <button> @Html.ActionLink("Atualizar", "Atualizar", new { id = Model.ProdutoID })</button>
+        <button>@Html.ActionLink("Detalhes", "Detalhes", new { id = Model.ProdutoID })</button>
+        <button>@Html.ActionLink("Remover", "Remover", new { id = Model.ProdutoID })</button>
+        <button>@Html.ActionLink("Volta para a lista dos Produtos", "Index")</button>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Atualizar", "Atualizar", new { id = Model.ProdutoID }) |
-    @Html.ActionLink("Volta para a lista dos Produtos", "Index")
-</p>
+
