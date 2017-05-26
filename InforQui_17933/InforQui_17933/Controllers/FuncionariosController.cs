@@ -147,16 +147,16 @@ namespace InforQui_17933.Controllers
             // Se o 'id' igual a nulo
             if (id == null)
             {
-                // vai retornar o 'erro' do Http
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                // gera um erro que se disse: "Não coloca o 'ID' do produto"
+                ModelState.AddModelError("", "Por favor coloca o 'ID' do produto!");
             }
             //Se não, vai encontrar ou criar um novo 'id' para a tabela 'Produto'
             Produtos produtos = db.Produtos.Find(id);
             //Se a tabela 'Produtos' igual a nulo
             if (produtos == null)
             {
-                //retorna o 'erro' do Http que disse: 'não existe' o produto na tabela
-                return HttpNotFound();
+                //vai retornar um 'erro' que se disse: "o produto não existe na tabela"
+                ModelState.AddModelError("", "Não existe o produto na tabela!");
             }
             //retorna para o 'View' os produto
             return View(produtos);
