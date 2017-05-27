@@ -4,7 +4,7 @@
         @Html.AntiForgeryToken()
 
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <table style="left:80%; position:absolute">
+            <table style="left:83%; position:absolute">
                 <tr>
                     <td>
                         @Html.ActionLink("Bem-vindo " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
@@ -20,14 +20,14 @@
 else
 {
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <table style="left:80%; position:absolute">
+        <table style="left:83%; position:absolute">
             <tr>
                 <td>
-                    <img src="~/Content/Imagens/registar.png" style="width:20px; height:20px; cursor:pointer">
+                    <img src="~/Content/Imagens/registar.png" style="width:50px; height:40px; cursor:pointer">
                     @Html.ActionLink("Registar", "Registar", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "registerLink" })
                 </td>
                 <td>
-                    <img src="~/Content/Imagens/entrar.png" style="width:20px; height:20px; cursor:pointer">
+                    <img src="~/Content/Imagens/entrar.png" style="width:50px; height:40px; cursor:pointer">
                     @Html.ActionLink("Entrar", "Login", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "loginLink" })
                 </td>
             </tr>
