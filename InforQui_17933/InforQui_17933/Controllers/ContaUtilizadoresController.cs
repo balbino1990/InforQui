@@ -114,6 +114,7 @@ namespace InforQui_17933.Controllers
 
                 var user = new ApplicationUser { 
                     UserName = model.Email,
+                    PasswordHash = model.Password,
                     Nome = model.Nome,
                     Email = model.Email,
                     Morada = model.Morada,
@@ -124,16 +125,16 @@ namespace InforQui_17933.Controllers
 
 
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "ContaUtilizadores", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    //ViewBag.Link = callbackUrl;
-                    //return View("DisplayEmail");
-                    return RedirectToAction("Index", "Clientes");
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "ContaUtilizadores", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    ViewBag.Link = callbackUrl;
+                    return View("DisplayEmail");
+                   // return RedirectToAction("Index", "Clientes");
                 }
                 AddErrors(result);
             }
