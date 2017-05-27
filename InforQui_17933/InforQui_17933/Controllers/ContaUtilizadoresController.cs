@@ -38,7 +38,6 @@ namespace InforQui_17933.Controllers
             }
         }
 
-       
         private ApplicationSignInManager _signInManager;
 
         public ApplicationSignInManager SignInManager
@@ -101,7 +100,6 @@ namespace InforQui_17933.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
 
         //
         // GET: /Account/Login
