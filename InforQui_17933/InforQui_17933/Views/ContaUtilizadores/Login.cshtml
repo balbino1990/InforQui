@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+            @using (Html.BeginForm("Login", "ContaUtilizadores", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
                 @Html.AntiForgeryToken()
                 <h4>Use a local account to log in.</h4>
                 <hr />
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <p>
-                    @Html.ActionLink("Register a new user?", "Register")
+                    @Html.ActionLink("Register a new user?", "Registar")
                 </p>
                 <p>
                     @Html.ActionLink("Forget your password?", "ForgotPassword")
