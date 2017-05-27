@@ -11,22 +11,13 @@
 
 @using (Html.BeginForm(FormMethod.Get))
 {
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <table style="left:10%; position:absolute">
-            <tr>
-                <td>
-                    <img src="~/Content/Imagens/InforQui1.png" width="50" height="40" />
-                </td>
-                <td>
-                    @Html.TextBox("Procurar")
-                    <input style="background-color:#00ff90; color:#ffffff; width:70px; height:20px;" type="submit" value="Procurar" />
-                </td>
-            </tr>
-        </table>
+    <div>
+        @Html.TextBox("Procurar")
+        <input style="background-color:#00ff90; color:#ffffff; width:70px; height:20px;" type="submit" value="Procurar" />
     </div>
 }
 
-<br /><br /><br /><br /><br /><br /><br />
+<br /><br />
 
     <div class="container" style="left:20%; position:absolute">
         <h2>Carousel Example</h2>
@@ -73,7 +64,7 @@
         </div>
     </div>
 
-    <br /><br />
+    <br /><br /><br /><br /><br /><br /><br />
     @foreach (var item in Model)
     {
         <div clas="produtoCliente" style="left:20px; cursor:pointer; float:left; padding:2px; margin:5px;">
@@ -90,7 +81,7 @@
         </div>
     }
 
-    <div style="top:50%; position:absolute;">
+    <div style="top:70%; position:absolute;">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { pagina = page }))
 
     </div>
