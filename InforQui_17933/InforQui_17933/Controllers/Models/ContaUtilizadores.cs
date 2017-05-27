@@ -45,17 +45,17 @@ namespace InforQui_17933.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Introduza a sua e-mail!")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Introduza o seu password")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Lembro me?")]
         public bool RememberMe { get; set; }
     }
 
@@ -76,13 +76,13 @@ namespace InforQui_17933.Models
         //O Email do utilizador
         [Required(ErrorMessage = "O campo {0} é obrigatoria")]
         [Display(Name = "Email de utilizador")]
-        [RegularExpression("[A-Za-z][A-Za-z0-9._%+-]+@inforqui.com",
-                          ErrorMessage = "o {0} tem de ser compativel com o servidor inforqui (@inforqui.com), e não permite os algarismos no inicio do email")]
+        [RegularExpression("[A-Za-z][A-Za-z0-9._]+@([A-Za-z].[A-Za-z])",
+                          ErrorMessage = "o {0} não permite os algarismos no inicio do email")]
         public string Email { get; set; }
 
         //O Password do utilizador
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "O {0} é preenchimento obrigatoria")]
+        [StringLength(100, ErrorMessage = "O {0} tem o tamanho 6, um caracter, uma letra maíuscula e um algarismo", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -90,7 +90,7 @@ namespace InforQui_17933.Models
         //O confirma password do utilizador
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "O password não são iguais")]
         public string ConfirmPassword { get; set; }
 
         //A Morada do utilizador
