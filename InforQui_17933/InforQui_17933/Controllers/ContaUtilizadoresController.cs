@@ -81,8 +81,8 @@ namespace InforQui_17933.Controllers
             {
                 // Os atributos dos utilizadores
 
-                var user = new ApplicationUser {
-                    Nome = model.Nome,
+                var user = new ApplicationUser { 
+                    UserName = model.Nome,
                     Email = model.Email,
                     PasswordHash = model.Password,
                     Morada = model.Morada,
@@ -93,7 +93,7 @@ namespace InforQui_17933.Controllers
 
 
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -223,7 +223,7 @@ namespace InforQui_17933.Controllers
                 }
 
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                var callbackUrl = Url.Action("ResetPassword", "ContaUtilizadores", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
                 ViewBag.Link = callbackUrl;
                 return View("ForgotPasswordConfirmation");
@@ -264,12 +264,12 @@ namespace InforQui_17933.Controllers
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return RedirectToAction("ResetPasswordConfirmation", "ContaUtilizadores");
             }
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return RedirectToAction("ResetPasswordConfirmation", "ContaUtilizadores");
             }
             AddErrors(result);
             return View();
@@ -291,7 +291,7 @@ namespace InforQui_17933.Controllers
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "ContaUtilizadores", new { ReturnUrl = returnUrl }));
         }
 
         //
@@ -404,7 +404,7 @@ namespace InforQui_17933.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Clientes");
         }
 
         //
