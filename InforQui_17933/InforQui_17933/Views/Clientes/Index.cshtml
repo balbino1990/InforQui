@@ -12,12 +12,14 @@
 @using (Html.BeginForm(FormMethod.Get))
 {
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <table style="left:14%; position:absolute">
+        <table style="left:10%; position:absolute">
             <tr>
                 <td>
+                    <img src="~/Content/Imagens/InforQui1.png" width="50" height="40" />
+                </td>
+                <td>
                     @Html.TextBox("Procurar")
-                    <img src="~/Content/Imagens/InforQui1.png" width="20" height="20" />
-                    <input style="background-color:#00ff90; color:#ffffff; width:70px; height:10px;" type="submit" value="Procurar" />
+                    <input style="background-color:#00ff90; color:#ffffff; width:70px; height:20px;" type="submit" value="Procurar" />
                 </td>
             </tr>
         </table>
