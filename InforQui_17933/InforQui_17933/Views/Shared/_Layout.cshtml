@@ -3,82 +3,46 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" type="image/png" href="~/Content/Imagens/InforQui1.png">
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-
+    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-            <table style="left:40%; position:absolute">
-                <tr>
-                    <td>
-                        <img src="~/Content/Imagens/Home.png" style="width:30px; height:30px; cursor:pointer">
-                        @Html.ActionLink("Inicio", "Index", "Clientes")
-                    </td>
-                    <td>
-                        <img src="~/Content/Imagens/utilizador.png" style="width:30px; height:30px; cursor:pointer">
-                        @Html.ActionLink("Utilizador", "Utilizador", "Home")
-                    </td>
-                    <td>
-                        <img src="~/Content/Imagens/sobre.png" style="width:30px; height:30px; cursor:pointer">
-                        @Html.ActionLink("Sobre", "Sobre", "Home")
-                    </td>
-                    <td>
-                        <img src="~/Content/Imagens/contact.png" style="width:30px; height:30px; cursor:pointer">
-                        @Html.ActionLink("Contacto", "Contactos", "Home")
-                    </td>
-                    <td>
-                        <img src="~/Content/Imagens/Funcionaro.png" style="width:30px; height:30px; cursor:pointer">
-                        @Html.ActionLink("Funcionarios", "Index", "Funcionarios")
-                    </td>
-                </tr>
-            </table>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Clientes", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Clientes")</li>
+                    <li>@Html.ActionLink("Sobre", "Sobre", "Home")</li>
+                    <li>@Html.ActionLink("Contactos", "Contactos", "Home")</li>
+                    <li>@Html.ActionLink("Utilizadores", "Utilizador", "Home")</li>
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
-            
-    <br />
-
-    <!--Adicionar o 'shopping cart' para a loja-->
-    <div style="position:fixed; left:70%; color:#00ff90;">
-        <img src="~/Content/Imagens/Cesto.png" style="width:50px; height:40px; cursor:pointer">
-        @Html.ActionLink("O meu cesto", "Index", "Compra")
     </div>
-
-    @Html.Partial("_LoginPartial")
-
     <div class="container body-content">
         @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
     </div>
-
-    <br /><br />
-    <div style="top:85%; position:relative">
-        <hr style="background-color:#00ffff; height:50px; width:1250px; " />
-
-        <div style="left:10%; position:absolute">
-            <p><b>&copy; @DateTime.Now.Year - InforQui coorporation</b></p>
-        </div>
-        <div style="left:40%; position:absolute; ">
-            <div style="font-family:Algerian">Siga-nos nas redes sociais</div>
-        </div><br />
-        <div style="left:40%; position:absolute;">
-            <a href="https://www.facebook.com/InforQui-1924713121076966/" target="_blank"><img src="~/Content/Imagens/face.png" style="height:30px; width:30px;" /></a>
-        </div>
-        <div style="left:44%; position:absolute;">
-            <a href="https://www.youtube.com/channel/UCYJ4Xd6Nsq1jeC2MFkEBnNQ" target="_blank"><img src="~/Content/Imagens/YouTube.png" style="height:30px; width:40px;" /></a>
-        </div>
-        <div style="left:48%; position:absolute; ">
-            <a href="https://www.instagram.com/inforqui6049/" target="_blank"><img src="~/Content/Imagens/instagram.png" style="height:30px; width:30px;" /></a>
-        </div>
-        <div style="left:60%; position:absolute;">
-            <img src="~/Content/Imagens/InforQui1.png" style="height:30px; width:30px;" title="Messenger InforQui" />
-        </div>
-    </div>
-    <br /><br />
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

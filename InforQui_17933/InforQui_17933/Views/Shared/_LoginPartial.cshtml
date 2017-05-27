@@ -1,36 +1,22 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated) {
-    using (Html.BeginForm("LogOff", "ContaUtilizadores", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "ContaUtilizadores", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
         @Html.AntiForgeryToken()
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <table style="left:83%; position:absolute">
-                <tr>
-                    <td>
-                        @Html.ActionLink("Bem-vindo " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                    </td>
-                    <td>
-                        <a href="javascript:document.getElementById('logoutForm').submit()">Sair</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else
 {
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <table style="left:83%; position:absolute">
-            <tr>
-                <td>
-                    <img src="~/Content/Imagens/registar.png" style="width:30px; height:30px; cursor:pointer">
-                    @Html.ActionLink("Registar", "Registar", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "registerLink" })
-                </td>
-                <td>
-                    <img src="~/Content/Imagens/entrar.png" style="width:30px; height:30px; cursor:pointer">
-                    @Html.ActionLink("Entrar", "Login", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "loginLink" })
-                </td>
-            </tr>
-        </table>
-    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registar", "Register", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Entrar", "Login", "ContaUtilizadores", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
 }

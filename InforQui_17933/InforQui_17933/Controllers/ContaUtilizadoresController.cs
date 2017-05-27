@@ -74,8 +74,8 @@ namespace InforQui_17933.Controllers
             {
                 // Os atributos dos utilizadores
 
-                var user = new ApplicationUser {
-                    Nome = model.Nome,
+                var user = new ApplicationUser { 
+                    UserName = model.Nome,
                     Email = model.Email,
                     PasswordHash = model.Password,
                     Morada = model.Morada,
@@ -86,7 +86,7 @@ namespace InforQui_17933.Controllers
 
 
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -225,7 +225,7 @@ namespace InforQui_17933.Controllers
                 }
 
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                var callbackUrl = Url.Action("ResetPassword", "ContaUtilizadores", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
                 ViewBag.Link = callbackUrl;
                 return View("ForgotPasswordConfirmation");
@@ -406,7 +406,7 @@ namespace InforQui_17933.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Clientes");
         }
 
         //
