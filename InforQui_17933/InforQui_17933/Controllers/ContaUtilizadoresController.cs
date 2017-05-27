@@ -19,7 +19,7 @@ namespace InforQui_17933.Controllers
         {
         }
 
-        public ContaUtilizadoresController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public ContaUtilizadoresController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -38,6 +38,15 @@ namespace InforQui_17933.Controllers
             }
         }
 
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
         private ApplicationSignInManager _signInManager;
 
         public ApplicationSignInManager SignInManager
@@ -47,67 +56,6 @@ namespace InforQui_17933.Controllers
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
             private set { _signInManager = value; }
-        }
-
-
-        //**********************************************************************************************
-        //      A registração dos utilizadores
-        //*********************************************************************************************
-
-        //
-        // GET: /ContaUtilizadores/Registar
-        [AllowAnonymous]
-        public ActionResult Registar()
-        {
-            return View();
-        }
-
-        //
-        // POST: /ContaUtilizadores/Registar
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Registar(Registo model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Os atributos dos utilizadores
-
-                var user = new ApplicationUser { 
-                    UserName = model.Nome,
-                    Email = model.Email,
-                    PasswordHash = model.Password,
-                    Morada = model.Morada,
-                    CodPostal = model.CodPostal,
-                    Contacto = model.Contacto,
-                    NIF = model.NIF,
-                    Imagem = model.Imagem
-
-
-                };
-                var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "ContaUtilizadores", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
-                }
-                AddErrors(result);
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
-
-        //
-        // GET: /Account/Login
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
         }
 
         //
@@ -139,6 +87,59 @@ namespace InforQui_17933.Controllers
                     return View(model);
             }
         }
+
+
+        //**********************************************************************************************
+        //      A registração dos utilizadores
+        //*********************************************************************************************
+
+        //
+        // GET: /ContaUtilizadores/Registar
+        [AllowAnonymous]
+        public ActionResult Registar()
+        {
+            return View();
+        }
+
+        //
+        // POST: /ContaUtilizadores/Registar
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Registar(Registo model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Os atributos dos utilizadores
+
+                var user = new ApplicationUser { 
+                    UserName = model.Nome,
+                    Email = model.Email,
+                    Morada = model.Morada,
+                    CodPostal = model.CodPostal,
+                    Contacto = model.Contacto,
+                    NIF = model.NIF,
+                    Imagem = model.Imagem
+
+
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "ContaUtilizadores", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    ViewBag.Link = callbackUrl;
+                    return View("DisplayEmail");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        
 
         //
         // GET: /Account/VerifyCode
