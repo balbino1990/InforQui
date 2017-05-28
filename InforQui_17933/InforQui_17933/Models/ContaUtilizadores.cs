@@ -76,8 +76,9 @@ namespace InforQui_17933.Models
         //O Email do utilizador
         [Required(ErrorMessage = "O campo {0} é obrigatoria")]
         [Display(Name = "Email de utilizador")]
-        [RegularExpression("[A-Za-z][A-Za-z0-9._]+@inforqui.com",
-                          ErrorMessage = "o {0} não permite os algarismos no inicio do email")]
+        [EmailAddress]
+        //[RegularExpression("[A-Za-z][A-Za-z0-9._]+@inforqui.com",
+        //                  ErrorMessage = "o {0} não permite os algarismos no inicio do email")]
         public string Email { get; set; }
 
         //O Password do utilizador
