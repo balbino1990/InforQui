@@ -22,10 +22,10 @@ namespace InforQui_17933.Migrations
             var produtos = new List<Produtos> {
                new Produtos  {ProdutoID=1, Nome = "Balão de Fundo chato",
                            Descricao ="A utilização do Balão de Fundo chata é para armazenar, preparar, aquecer ou recolher soluções. Podem ser de vidro transparente ou âmbar.",
-                           Preco="€20,00", Imagem="balao_de_fundo_chato.jpg", Tipo="Instrumento"},
+                           Preco="€20,00", Imagem="balao_de_fundo_chato.jpg", Tipo="Instrumento", NomeUtilizador="a@a.aa"},
                new Produtos  {ProdutoID=2, Nome = "Erlenmeyer",
                            Descricao ="A utilização de Erlenmeyer é para recolher frações de materiais destilados ou para conter misturas que serão homogeneizadas.",
-                           Preco="€50,00", Imagem="Erlenmeyer.jpg", Tipo="Instrumento"},
+                           Preco="€50,00", Imagem="Erlenmeyer.jpg", Tipo="Instrumento",  NomeUtilizador="b@b.bb"},
                new Produtos  {ProdutoID=3, Nome = "Béquer",
                            Descricao ="A utilização do Béquer é resistir o aquecimento, resfriamento e ataques de produtos químicos, com escala de pouca precisão.",
                            Preco="€40,00", Imagem="Calix_Beaker.jpg", Tipo="Instrumento"},

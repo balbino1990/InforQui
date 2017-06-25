@@ -53,6 +53,8 @@ namespace InforQui_17933.Models
         [Display(Name = "Tipo do produto")]
         public string Tipo { get; set; }
 
+        public string NomeUtilizador { get; set; }
+
         //########## Relacionamentos e chaves estrangeiras
         //Relacionamento entre a tabela Produto e Compras_Produtos
         //1 'Produto' relacionar com muitas 'Compras_Produtos'
