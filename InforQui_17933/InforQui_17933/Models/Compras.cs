@@ -27,13 +27,20 @@ namespace InforQui_17933.Models
         public DateTime Data { get; set; }
 
 
+        ////########### Relacionamentos e chaves estrangeiras####################
+        ////chave estrangeira das compras
+        //[ForeignKey("Utilizador")]
+        ////existe para criar a FK na BD
+        //public int UtilizadorFK { get; set; }
+        ////relacionamento entre a tabela Compras com a tabela utilizadores
+        //public Utilizadores Utilizador { get; set; }
+
         //########### Relacionamentos e chaves estrangeiras####################
         //chave estrangeira das compras
-        [ForeignKey("Utilizador")]
         //existe para criar a FK na BD
-        public int UtilizadorFK { get; set; }
         //relacionamento entre a tabela Compras com a tabela utilizadores
-        public Utilizadores Utilizador { get; set; }
+        public string  UtilizadorFK { get; set; }
+        
 
         //Relacionamento entre a tabela Compras com a tabela Compras_Produtos
         // 1 'Compra' relacionar com muitas 'Compras_Produtos'

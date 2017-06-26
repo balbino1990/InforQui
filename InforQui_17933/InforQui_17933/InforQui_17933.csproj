@@ -387,6 +387,8 @@
     <Content Include="Views\Home\Contactos.cshtml" />
     <Content Include="Views\Home\Sobre.cshtml" />
     <Content Include="Views\Home\Utilizador.cshtml" />
+    <Content Include="Views\Clientes\AddCart.cshtml" />
+    <Content Include="Views\Funcionarios\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

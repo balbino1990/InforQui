@@ -22,7 +22,7 @@ namespace InforQui_17933.Models
         //O preço dos produtos comprado
         [Display(Name = "Preço do produto comprados")]
         [Required(ErrorMessage = "O {0} é preenchimento obrigatorio")]
-        public string Preco { get; set; }
+        public double Preco { get; set; }
 
         //######### Relacionamentos e Chaves estrangeiras ###################
         //chave estrangeira da tabela Compras_Produtos

@@ -6,91 +6,87 @@
 @using (Html.BeginForm("Registar", "ContaUtilizadores", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div style="color:#ffffff; background-color:#4800ff; font-size: 20px;">Ficha de Registo</div>
-    <hr />
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Nome, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-        </div>
+    <br /><br />
+    <div class="btn-success" style="width:700px; height:30px; font-size:18px;">
+        Ficha de Inscrições
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
+    <div style="padding: 20px;" id="form-olvidado">
+        <fieldset>
+
+            @* Nome do Utilizador *@
+            <div class="form-group input-group">
+                <span class="input-group-addon glyphicon glyphicon-user"></span>
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @placeholder = "Nome Utilizador" })
+                @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
+            </div>
+
+            @* Email do utilizador *@
+            <div class="form-group input-group">
+                <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email Utilizador" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+            @* Password do utilizador *@
+            <div class="form-group input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password Utilizador" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+            @* Confirmar Password do utilizador *@
+            <div class="form-group input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirmar Password Utilizador" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+
+            @* Morada do utilizador *@
+            <div class="form-group input-group">
+                <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
+                @Html.TextBoxFor(m => m.Morada, new { @class = "form-control", @placeholder = "Morada Utilizador" })
+                @Html.ValidationMessageFor(m => m.Morada, "", new { @class = "text-danger" })
+            </div>
+
+            @* Código postal do utilizador *@
+            <div class="form-group input-group">
+                <span class="input-group-addon glyphicon glyphicon-qrcode"></span>
+                @Html.TextBoxFor(m => m.CodPostal, new { @class = "form-control", @placeholder = "Código Postal Utilizador", @maxlength = "8" })
+                @Html.ValidationMessageFor(m => m.CodPostal, "", new { @class = "text-danger" })
+            </div>
+
+            @* NIF do utilizador *@
+            <div class="form-group input-group">
+                <span class="input-group-addon glyphicon glyphicon-qrcode"></span>
+                @Html.TextBoxFor(m => m.NIF, new { @class = "form-control", @placeholder = "NIF Utilizador", @maxlength = "9" })
+                @Html.ValidationMessageFor(m => m.NIF, "", new { @class = "text-danger" })
+            </div>
+
+            @* Contacto do utilizador *@
+            <div class="form-group input-group">
+                <span class="input-group-addon glyphicon glyphicon-phone-alt"></span>
+                @Html.TextBoxFor(m => m.Contacto, new { @class = "form-control", @placeholder = "Contacto Utilizador", @maxlength = "9" })
+                @Html.ValidationMessageFor(m => m.Contacto, "", new { @class = "text-danger" })
+            </div>
+
+            <br />
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <input type="submit" value="Registar" class="btn btn-default btn-block btn-success" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Morada, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Morada, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Morada, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.CodPostal, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.CodPostal, new { @class = "form-control", @maxlenght="7" })
-            @Html.ValidationMessageFor(model => model.CodPostal, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.NIF, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.NIF, new { @class = "form-control", @maxlenght = "9" })
-            @Html.ValidationMessageFor(model => model.NIF, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Contacto, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Contacto, new { @class = "form-control", @maxlenght = "9" })
-            @Html.ValidationMessageFor(model => model.Contacto, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Imagem, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Imagem, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Registar" />
-        </div>
-    </div>
 }
 
 @section Scripts {

@@ -69,7 +69,7 @@ namespace InforQui_17933.Controllers
         // POST: Funcionarios/Adicionar
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Adicionar([Bind(Include = "ProdutosID,Nome,Descricao,Marca,Imagem,Tipo")] Produtos produto, HttpPostedFileBase file) //HttpPostedFileBase é uma classe do sistema que permite os clientes fazer o upload dos ficheiros
+        public ActionResult Adicionar([Bind(Include = "ProdutosID,Nome,Descricao,Preco,Imagem,Tipo")] Produtos produto, HttpPostedFileBase file) //HttpPostedFileBase é uma classe do sistema que permite os clientes fazer o upload dos ficheiros
         {
 
             //determinar o nº (ID) a atribuir a novo 'Produto'
@@ -171,7 +171,7 @@ namespace InforQui_17933.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //Esta ActionResult vai ligar para os atributos da tabela 'Produtos'
-        public ActionResult Atualizar([Bind(Include = "ProdutosID,Nome,Descricao,Marca,Imagem,Tipo")] Produtos produto, HttpPostedFileBase file)
+        public ActionResult Atualizar([Bind(Include = "ProdutoID,Nome,Descricao,Preco,Tipo")] Produtos produto, HttpPostedFileBase file)
         {
             // Se o modelo ou classe 'Produtos' não tem erro
             if (ModelState.IsValid)
@@ -183,7 +183,16 @@ namespace InforQui_17933.Controllers
                     file.SaveAs(HttpContext.Server.MapPath("~/Content/Imagens/") + file.FileName);
                     //O atributo 'imagem' da tabela 'Produto' vai receber o ficheiro
                     produto.Imagem = file.FileName;
-                    db.Entry(file).State = EntityState.Modified;
+                   // db.Entry(file).State = EntityState.Modified;
+                }
+                else
+                {
+                    // não se pretende trocar a imagem
+                    //**********************************
+                    // procurar os dados do produto q estão guardados na BD
+                    //Produtos auxProduto = db.Produtos.Find(produto.ProdutoID);
+                    // atribuir ao novo produto, o nome da imagem que está guardado na BD
+                    produto.Imagem = db.Produtos.AsNoTracking().Where(p=>p.ProdutoID==produto.ProdutoID).FirstOrDefault().Imagem;
                 }
 
                 db.Entry(produto).State = EntityState.Modified;
@@ -193,10 +202,10 @@ namespace InforQui_17933.Controllers
                         //vai guardar no base de dados 'InforQui', se já não tem erro
                         db.SaveChanges();
                     }
-                    catch (System.Exception)
+                    catch (System.Exception ex)
                     {
                         //vai gerar o erro para informar ao utilizador
-                        ModelState.AddModelError("","Não consegue adicionar o produto na tabela!");
+                        ModelState.AddModelError("","Não consegue atualizar o produto na tabela!");
                         return View(produto);
                     }
                 //retornar e redirecionar o ação para o 'View' Index

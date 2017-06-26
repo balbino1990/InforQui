@@ -41,8 +41,8 @@ namespace InforQui_17933
 
                 // criar o utilizador 'Santos Pires'
                 var user = new ApplicationUser();
-                user.UserName = "santospires@hotmail.com";
-                user.Email = "santospires@hotmail.com";
+                user.UserName = "santospires@inforqui.com";
+                user.Email = "santospires@inforqui.com";
                 //user.UserName = "Santos Pires";
                 string userPWD = "1990Daucua.";
                 var chkUser = userManager.Create(user, userPWD);
@@ -55,8 +55,8 @@ namespace InforQui_17933
                 //-------------------------------------------------------------------------
                 // criar o utilizador 'Andre Quintão'
                 var user1 = new ApplicationUser();
-                user1.UserName = "andrequintao99@yahoo.com";
-                user1.Email = "andrequintao99@yahoo.com";
+                user1.UserName = "andrequintao99@inforqui.com";
+                user1.Email = "andrequintao99@inforqui.com";
                 //user.UserName = "Andre Quintão";
                 string userPWD1 = "1990Daucua.";
                 var chkUser1 = userManager.Create(user1, userPWD1);
@@ -77,8 +77,8 @@ namespace InforQui_17933
 
                 // criar o utilizador 'Manuel Pinto Sousa'
                 var user = new ApplicationUser();
-                user.UserName = "manuel1982@hotmail.com";
-                user.Email = "manuel1982@hotmail.com";
+                user.UserName = "manuel1982@inforqui.com";
+                user.Email = "manuel1982@inforqui.com";
                 //user.UserName = "Manuel Pinto Sousa";
                 string userPWD = "1990Daucua.";
                 var chkUser = userManager.Create(user, userPWD);
@@ -92,8 +92,8 @@ namespace InforQui_17933
                 //-------------------------------------------------------------
                 // criar o utilizador 'Mariano Freitas'
                 var user1 = new ApplicationUser();
-                user1.UserName = "freitasmariano90@gmail.com";
-                user1.Email = "freitasmariano90@gmail.com";
+                user1.UserName = "freitasmariano90@inforqui.com";
+                user1.Email = "freitasmariano90@inforqui.com";
                 //user.UserName = "Mariano Freitas";
                 string userPWD1 = "1990Daucua.";
                 var chkUser1 = userManager.Create(user1, userPWD1);
@@ -115,8 +115,8 @@ namespace InforQui_17933
 
                 // criar o utilizador 'Mario Suares'
                 var user = new ApplicationUser();
-                user.UserName = "suares1985@gmail.com";
-                user.Email = "suares1985@gmail.com";
+                user.UserName = "suares1985@inforqui.com";
+                user.Email = "suares1985@inforqui.com";
                 //user.UserName = "Mario Suares";
                 string userPWD = "1990Daucua.";
                 var chkUser = userManager.Create(user, userPWD);
@@ -129,8 +129,8 @@ namespace InforQui_17933
 
                 // criar o utilizador 'Martinho Gusmão'
                 var user1 = new ApplicationUser();
-                user1.UserName = "gusmao1979@hotmail.com";
-                user1.Email = "gusmao1979@hotmail.com";
+                user1.UserName = "gusmao1979@inforqui.com";
+                user1.Email = "gusmao1979@inforqui.com";
                 //user.Name = "Martinho Gusmão";
                 string userPWD1 = "1990Daucua.";
                 var chkUser1 = userManager.Create(user1, userPWD1);
@@ -143,8 +143,8 @@ namespace InforQui_17933
 
                 // criar o utilizador 'Rosito Belo Martins'
                 var user3 = new ApplicationUser();
-                user3.UserName = "rositobelo@yahoo.com";
-                user3.Email = "rositobelo@yahoo.com";
+                user3.UserName = "rositobelo@inforqui.com";
+                user3.Email = "rositobelo@inforqui.com";
                 //user.Name = "Rosito Belo Martins";
                 string userPWD3 = "1990Daucua.";
                 var chkUser3 = userManager.Create(user3, userPWD3);

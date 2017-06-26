@@ -1,47 +1,57 @@
 ﻿@model InforQui_17933.Models.Produtos
 
 @{
-    ViewBag.Title = "Detalhes";
+    ViewBag.Title = "Detalhes dos produtos";
 }
 
-<h4>Detalhes dos produtos</h4>
+<div style="float:left">
+    <br /><br />
+    <h4> 
+        <i>@Html.DisplayFor(model => model.Nome)</i>
+    </h4>
+    <table class="dl-horizontal" style="border:2px solid #808080;">
+        <tr style="border:2px solid #808080;">
+            <th style="border:2px solid #808080; text-align:center">
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th style="border:2px solid #808080; text-align:center">
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th style="border:2px solid #808080; text-align:center">
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
 
-<div>
-    <hr />
+        </tr>
 
-    <table class="dl-horizontal">
-        <tr>
-            <td>
-                <img src="~/Content/Imagens/@Html.DisplayFor(model =>model.Imagem)" style="height:200px;width:200px;" />
+
+        <tr style="border:2px solid #808080;">
+            <td width="400px; text-align:center">
+                @Html.DisplayFor(model => model.Descricao)
             </td>
-            
-            <td>
-                <table>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.Nome):  </th>
-                        <td>@Html.DisplayFor(model => model.Nome)</td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.Descricao):    </th>
-                        <td>@Html.DisplayFor(model => model.Descricao)</td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.Tipo):  </th>
-                        <td>@Html.DisplayFor(model => model.Tipo)</td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.Imagem):  </th>
-                        <td>@Html.DisplayFor(model => model.Imagem)</td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.Preco):  </th>
-                        <td>@Html.DisplayFor(model => model.Preco)</td>
-                    </tr>
-                </table>
+
+            <td style="border:2px solid #808080; text-align:center">
+                @Html.DisplayFor(model => model.Preco)
+            </td>
+
+            <td style="border:2px solid #808080; text-align:center">
+                @Html.DisplayFor(model => model.Tipo)
+            </td>
         </tr>
     </table>
 </div>
 <br /><br />
-<p>
-    @Html.ActionLink("Volta para a lista dos produtos", "Index")
-</p>
+
+<div style="float:right">
+    <img src="~/Content/Imagens/@Html.DisplayFor(model =>model.Imagem)" style="height:200px;width:300px;" />
+</div>
+
+<div style="top:45%; left:20%; position:absolute">
+    <button class="btn-secondary">
+        @Html.ActionLink("Volta para a lista dos produtos", "Index")
+    </button>
+    <button class="btn-info">
+        @Html.ActionLink("Adicionar Carrinho", "AddCart", new { id = Model.ProdutoID })
+    </button>
+</div>
+
+<br />
