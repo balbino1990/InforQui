@@ -10,39 +10,97 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Clientes", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Clientes")</li>
-                    <li>@Html.ActionLink("Sobre", "Sobre", "Home")</li>
-                    <li>@Html.ActionLink("Contactos", "Contactos", "Home")</li>
-                    <li>@Html.ActionLink("Utilizadores", "Utilizador", "Home")</li>
+        <nav class="navbar-inner" style="background-color:#00ffff;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
+                        <li style="border:2px solid #ffffff;">
+                            <button class="btn btn-info">
+                                <img src="~/Content/Imagens/Home.png" width="40" height="40" />
+                                @Html.ActionLink("Inicio", "Index", "Clientes")
+                            </button>
+                        </li>
+
+                        <li style="border:2px solid #ffffff">
+                            <button class="btn btn-info">
+                                <img src="~/Content/Imagens/sobre.png" width="40" height="40" />
+                                @Html.ActionLink("Sobre", "Sobre", "Home")
+                            </button>
+                        </li>
+
+                        <li style="border:2px solid #ffffff">
+                            <button class="btn btn-info">
+                                <img src="~/Content/Imagens/contact.png" width="40" height="40" />
+                                @Html.ActionLink("Contactos", "Contactos", "Home")
+                            </button>
+                        </li>
+
+                        <li style="border:2px solid #ffffff">
+                            <button class="btn btn-info">
+                                <img src="~/Content/Imagens/utilizador.png" width="40" height="40" />
+                                @Html.ActionLink("Utilizadores", "Utilizador", "Home")
+                            </button>
+                        </li>
+
+
+                        @if (User.IsInRole("Funcionario"))
+                        {
+                            <li style="border:2px solid #ffffff">
+                                <button class="btn btn-info">
+                                    <img src="~/Content/Imagens/Funcionaro.png" width="40" height="40" />
+                                    @Html.ActionLink("Funcionarios", "Index", "Funcionarios")
+                                </button>
+                            </li>
+                        }
+
+                        @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
+                        {
+                            <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                            <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
-        </div>
+        </nav>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+
+    <br /><br />
+    <div style="top:85%; position:relative">
+        <hr style="background-color:#00ffff; height:50px; width:1250px; " />
+
+        <div style="left:10%; position:absolute">
+            <p><b>&copy; @DateTime.Now.Year - InforQui coorporation</b></p>
+        </div>
+        <div style="left:40%; position:absolute; ">
+            <div style="font-family:Algerian">Siga-nos nas redes sociais</div>
+        </div><br />
+        <div style="left:40%; position:absolute;">
+            <a href="https://www.facebook.com/InforQui-1924713121076966/" target="_blank"><img src="~/Content/Imagens/face.png" style="height:30px; width:30px;" /></a>
+        </div>
+        <div style="left:44%; position:absolute;">
+            <a href="https://www.youtube.com/channel/UCYJ4Xd6Nsq1jeC2MFkEBnNQ" target="_blank"><img src="~/Content/Imagens/YouTube.png" style="height:30px; width:40px;" /></a>
+        </div>
+        <div style="left:48%; position:absolute; ">
+            <a href="https://www.instagram.com/inforqui6049/" target="_blank"><img src="~/Content/Imagens/instagram.png" style="height:30px; width:30px;" /></a>
+        </div>
+        <div style="left:60%; position:absolute;">
+            <img src="~/Content/Imagens/InforQui1.png" style="height:30px; width:30px;" title="Messenger InforQui" />
+        </div>
+    </div>
+    <br /><br />
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -1,17 +1,18 @@
 ﻿@model InforQui_17933.Models.Produtos
 
 @{
-    ViewBag.Title = "Atualizar os Produtos";
+    ViewBag.Title = "Atualizar";
 }
 
-<h2>Atualizar os produtos</h2>
+<h2>Editar o produto</h2>
 
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("Atualizar", "Funcionarios", null, FormMethod.Post,
+                                          new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Produtos</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProdutoID)
@@ -33,22 +34,42 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="editor-field">
-                    <input id="Imagem" title="Upload o imagem"
-                           type="file" name="file" />
-                </div>
-                @*@Html.EditorFor(model => model.Imagem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Preco, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Preco, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="editor-field">
+                    @{
+                        <script>
+                             //a função que vai mudar a imagem
+                            function mudarImagem(input) {
+                                //se o parametro inut é o tipo 'file' e contenha o valor zero
+                                    if (input.files && input.files[0])
+                                    {
+                                     //referençia uma variavel para o FileReader
+                                    var reader = new FileReader();
+
+                                    reader.onload = function(e) {
+                                                                $('#imagem')
+                                                                    .attr('src', e.target.result)
+                                                                    .width(200)
+                                                                    .height(200);
+                                                                   };
+
+                                    reader.readAsDataURL(input.files[0]);
+                                    }
+                            }
+                        </script>
+                    }
+                    <img id="imagem" src="~/Content/Imagens/@Html.DisplayFor(model=>model.Imagem)" style="width:200px;height:200px" />
+                    <input type='file' onchange="mudarImagem(this);" />
+                </div>
             </div>
         </div>
 
@@ -60,14 +81,21 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="left:25%; top:94%; position:absolute">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-default" style="background-color:#00ff90;" />
             </div>
         </div>
     </div>
-}
+                        }
 
+<br />
 <div>
-    @Html.ActionLink("Volta para a lista dos Produtos", "Index")
+    <button class="btn-info">
+        @Html.ActionLink("Regressar para a lista dos produtos", "Index")
+    </button>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

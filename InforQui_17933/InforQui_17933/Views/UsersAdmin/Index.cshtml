@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
-
+            @Html.DisplayNameFor(model => model.Imagem)
         </th>
     </tr>
 
@@ -24,6 +24,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                <img src="~/Content/ImagensUtilizadores/@Html.DisplayFor(model => item.Imagem)" style="height:50px;width:50px;" /><br />
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

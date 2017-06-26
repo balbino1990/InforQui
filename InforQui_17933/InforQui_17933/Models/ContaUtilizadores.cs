@@ -78,7 +78,7 @@ namespace InforQui_17933.Models
         [Display(Name = "Email de utilizador")]
         [EmailAddress]
         //[RegularExpression("[A-Za-z][A-Za-z0-9._]+@inforqui.com",
-        //                  ErrorMessage = "o {0} não permite os algarismos no inicio do email")]
+          //                ErrorMessage = "o {0} não permite os algarismos no inicio do email")]
         public string Email { get; set; }
 
         //O Password do utilizador

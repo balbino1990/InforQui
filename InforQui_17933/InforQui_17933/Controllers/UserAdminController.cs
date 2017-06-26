@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace InforQui_17933.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Administrador")]
     public class UsersAdminController : Controller
     {
         public UsersAdminController()

@@ -25,7 +25,7 @@ namespace InforQui_17933.Models
         //O nome do produto
         [Required(ErrorMessage = "O campo {0} é obrigatoria")]
         [Display(Name = "Nome do produto")]
-        //[RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòùãõç]+( [A-Z][a-záéíóúàèìòùãõç]+)*",
+        //[RegularExpression("[A-ZÁÉÍÓÚÀÈÌÒÙ][a-záéíóúàèìòùãõäëïöüçñ]+((( (de|da|do|ou|para) ))[A-Z][a-záéíóúàèìòùãõäëïöüçñ]+){1,3}",
           //                  ErrorMessage = "O campo do {0} não permite o algarismo e letra minúscula no inicio do nome e permite os caracteres português")]
         public string Nome { get; set; }
 
@@ -38,8 +38,8 @@ namespace InforQui_17933.Models
 
         //O preço do produto
         [Required(ErrorMessage = "O campo {0} é obrigatoria")]
-        //[RegularExpression("[€][0-9]+[,]([0-9]{2})",
-          //                ErrorMessage = "O preço do produto tem de ser usar a moeda euro (€) e tem de ter dois digitos decimais ultimos")]
+        [RegularExpression("[€][0-9]+[,]([0-9]{2})",
+                          ErrorMessage = "O preço do produto tem de ser usar a moeda euro (€) e tem de ter dois digitos decimais ultimos")]
         [Display(Name = "Preço do produto")]
         public string Preco { get; set; }
 

@@ -11,6 +11,7 @@ using InforQui_17933.Models;
 
 namespace InforQui_17933.Controllers
 {
+    [Authorize(Roles = "Cliente")]
     public class ClientesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -20,6 +21,7 @@ namespace InforQui_17933.Controllers
         //***********************************************************************************************************************
 
         // GET: Clientes
+        [Authorize(Roles = "Cliente")]
         public ActionResult Index(string Procurar, int? pagina)
         {
             var produtos = from s in db.Produtos
@@ -48,6 +50,7 @@ namespace InforQui_17933.Controllers
         //***********************************************************************************************************************
 
         // GET: Clientes/Detalhes/5
+        [Authorize(Roles = "Cliente")]
         public ActionResult Detalhes(int? id)
         {
             //Se o 'ID' do produto igual a nulo ou quer dizer não colocado

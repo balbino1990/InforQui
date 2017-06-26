@@ -1,63 +1,61 @@
 ﻿@model InforQui_17933.Models.Produtos
 
 @{
-    ViewBag.Title = "Detalhes Produtos";
+    ViewBag.Title = "Detalhes dos produtos";
 }
 
+    <div style="float:left">
 
-<div>
-    <h4>Os detalhes do Produto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
+        <h4>
             @Html.DisplayFor(model => model.Nome)
-        </dd>
+        </h4>
+        <hr />
+        <table class="dl-horizontal" style="border:2px solid #808080;">
+            <tr style="border:2px solid #808080;">
+                <th style="border:2px solid #808080; text-align:center">
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th style="border:2px solid #808080; text-align:center">
+                    @Html.DisplayNameFor(model => model.Preco)
+                </th>
+                <th style="border:2px solid #808080; text-align:center">
+                    @Html.DisplayNameFor(model => model.Tipo)
+                </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </dt>
-
-        <dd>
-            <img src="~/Content/Imagens/@Html.DisplayFor(model =>model.Imagem)" style="height:200px;width:200px;" />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Preco)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Preco)
-        </dd>
+            </tr>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
+            <tr style="border:2px solid #808080;">
+                <td width="300px; text-align:center">
+                    @Html.DisplayFor(model => model.Descricao)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
+                <td style="border:2px solid #808080; text-align:center">
+                    @Html.DisplayFor(model => model.Preco)
+                </td>
 
-    </dl>
-
-    <br /><br />
-    <div>
-        <button> @Html.ActionLink("Atualizar", "Atualizar", new { id = Model.ProdutoID })</button>
-        <button>@Html.ActionLink("Detalhes", "Detalhes", new { id = Model.ProdutoID })</button>
-        <button>@Html.ActionLink("Remover", "Remover", new { id = Model.ProdutoID })</button>
-        <button>@Html.ActionLink("Volta para a lista dos Produtos", "Index")</button>
+                <td style="border:2px solid #808080; text-align:center">
+                    @Html.DisplayFor(model => model.Tipo)
+                </td>
+            </tr>
+        </table>
+        <br />
+        <p>
+            <button class="btn-secondary glyphicon glyphicon-step-backward" style="height:40px;">
+                @Html.ActionLink("Volta para a lista dos produtos", "Index")
+            </button>
+            <button class="btn-info glyphicon glyphicon-refresh" style="height:40px;">
+                @Html.ActionLink("Atualizar", "Atualizar", new { id = Model.ProdutoID })
+            </button>
+            <button class="btn-danger glyphicon glyphicon-trash" style="height:40px;">
+                @Html.ActionLink("Remover", "Remover", new { id = Model.ProdutoID })
+            </button>
+        </p>
     </div>
-</div>
+    <br /><br />
 
+    <div style="float:right">
+        <img src="~/Content/Imagens/@Html.DisplayFor(model =>model.Imagem)" style="height:200px;width:300px;" />
+    </div>
+
+<br />

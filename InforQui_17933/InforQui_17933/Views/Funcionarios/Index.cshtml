@@ -8,24 +8,25 @@
 
     <h2>Index</h2>
 
-    <p>
-        @Html.ActionLink("Adicionar novo produto", "Adicionar")
-    </p>
-    <table style="border:2px solid #00ffff;">
+    <button class="btn-info glyphicon glyphicon-plus" style="height:40px; font-size:14px;">
+         @Html.ActionLink("Adicionar o produto", "Adicionar")
+    </button>
+<br />
+    <table>
         <tr style="border: 2px solid #00ffff;">
-            <th  style="border: 2px solid #00ffff;">
+            <th style="border: 2px solid #00ffff; text-align:center">
                 @Html.DisplayName("Nome do Produto")
             </th>
-            <th  style="border: 2px solid #00ffff;">
+            <th style="border: 2px solid #00ffff; text-align:center">
                 @Html.DisplayName("Descrição do produto")
             </th>
-            <th  style="border: 2px solid #00ffff;">
+            <th style="border: 2px solid #00ffff; text-align:center">
                 @Html.DisplayName("Imagem do produto")
             </th>
-            <th  style="border: 2px solid #00ffff;">
+            <th style="border: 2px solid #00ffff; text-align:center">
                 @Html.DisplayName("Preço do produto")
             </th>
-            <th  style="border: 2px solid #00ffff;">
+            <th style="text-align:center">
                 @Html.DisplayName("Tipo do produto")
             </th>
 
@@ -35,10 +36,10 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td style="border: 2px solid #00ffff;">
+                <td style="border: 2px solid #00ffff; text-align:center">
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
-                <td  style="border: 2px solid #00ffff;">
+                <td  style="border: 2px solid #00ffff; text-align:center">
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </td>
                 <td  style="border: 2px solid #00ffff;">
@@ -55,12 +56,7 @@
             </tr>
         }
 
-        
-        <tr>
-            <td>
-               @Html.PagedListPager(Model, page => Url.Action("Index", new { pagina = page }))
-            </td>
-        </tr>
     </table>
-
+    
+<p>@Html.PagedListPager(Model, page => Url.Action("Index", new { pagina = page }))</p>
     
