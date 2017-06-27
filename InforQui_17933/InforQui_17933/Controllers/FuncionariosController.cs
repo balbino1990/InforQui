@@ -17,7 +17,6 @@ namespace InforQui_17933.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Funcionarios/Index
-        [Authorize(Roles = "Funcionario")]
         public ActionResult Index(int? pagina)
         {
             
@@ -32,7 +31,6 @@ namespace InforQui_17933.Controllers
         }
 
         // GET: Funcionarios/Detalhes/5
-        [Authorize(Roles = "Funcionario")]
         public ActionResult Detalhes(int? id)
         {
             // Se o 'id' do produto igual a nulo
@@ -59,7 +57,6 @@ namespace InforQui_17933.Controllers
         //***********************************************************************************************************************
 
         // GET: funcionarios/Adicionar
-        [Authorize(Roles = "Funcionario")]
         public ActionResult Adicionar()
         {
             // retorna para o 'VIEW' 
@@ -146,7 +143,6 @@ namespace InforQui_17933.Controllers
         //***********************************************************************************************************************
 
         // GET: Funcionarios/Atualizar/5
-        [Authorize(Roles = "Funcionario")]
         public ActionResult Atualizar(int? id)
         {
             // Se o 'id' igual a nulo
@@ -202,7 +198,7 @@ namespace InforQui_17933.Controllers
                         //vai guardar no base de dados 'InforQui', se já não tem erro
                         db.SaveChanges();
                     }
-                    catch (System.Exception ex)
+                    catch (System.Exception)
                     {
                         //vai gerar o erro para informar ao utilizador
                         ModelState.AddModelError("","Não consegue atualizar o produto na tabela!");
@@ -222,7 +218,6 @@ namespace InforQui_17933.Controllers
         //***********************************************************************************************************************
 
         // GET: Funcionarios/Remover/5
-        [Authorize(Roles = "Funcionario")]
         public ActionResult Remover(int? id)
         {
             // Se o 'id' do produto igual a nulo

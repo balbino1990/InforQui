@@ -70,7 +70,7 @@ namespace InforQui_17933.Controllers
         }
 
 
-        public ActionResult AddCart(int? id)
+        public ActionResult AddCart()
         {
             return View();
         }

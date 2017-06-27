@@ -137,32 +137,7 @@ namespace InforQui_17933.Migrations
                                                                                    //pp é variavel interna, => apenas é um simbolo de C#, significa 
             context.SaveChanges();      //igual o commit do mySql  
 
-            //################################################################################
-            //Adiciona um utilizador
-            //################################################################################
-            var utilizador = new List<Utilizadores>
-            {
-                new Utilizadores {UtilizadorID=1, Nome="Santos Pires", Email="santospires@hotmail.com",
-                                 Morada ="Santarem", CodPostal="2004-001", NIF=976567764, Contacto="965567323", Imagem="Santos_Pires.png"},
-                new Utilizadores {UtilizadorID=2, Nome="Andre Quintão", Email="andrequintao99@yahoo.com",
-                                 Morada ="Entroncamento",  CodPostal="2330-501", NIF=786543987, Contacto="925676332",  Imagem="Andre_Quintao.jpg"},
-                new Utilizadores {UtilizadorID=3, Nome="Manuel Pinto Sousa", Email="manuel1982@hotmail.com",
-                                 Morada ="Tomar", CodPostal="2300-313", NIF=985345789, Contacto="963387123", Imagem="Manuel_Pinto.png"},
-                new Utilizadores {UtilizadorID=4, Nome="Mariano Freitas", Email="freitasmariano90@gmail.com",
-                                 Morada ="Torres Novas", CodPostal="2350-222", NIF=723491876, Contacto="966789552", Imagem="Mariano_Freitas.png"},
-                new Utilizadores {UtilizadorID=5, Nome="Mario Suares", Email="suares1985@gmail.com",
-                                 Morada ="Lisboa", CodPostal="1000-105", NIF=963452679, Contacto="92776929", Imagem="Mario_Suares.jpeg"},
-                new Utilizadores {UtilizadorID=6, Nome="Martinho Gusmão", Email="gusmao1979@hotmail.com",
-                                 Morada ="Lisboa", CodPostal="1000-110", NIF=879658976, Contacto="965556743", Imagem="Martinho_Gusmao.jpeg"},
-                new Utilizadores {UtilizadorID=7, Nome="Rosito Belo Martins", Email="rositobelo@yahoo.com",
-                                 Morada ="Entroncamento", CodPostal="2330-501", NIF=879653289, Contacto="936656992", Imagem="Rosito_Belo.png"},
-            };
-
-            utilizador.ForEach(uu => context.Utilizadores.AddOrUpdate(u => u.Nome, uu)); //metodo ForEach, pegar cada um dos objetos da lista vai fazer o trabalho que esta fazer 
-                                                                                         //uu é variavel interna, => apenas é um simbolo de C#, significa 
-            context.SaveChanges();      //igual o commit do mySql
-
-
+           
             //################################################################################
             //Adiciona uma compra
             //################################################################################

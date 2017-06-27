@@ -51,7 +51,7 @@
                             </button>
                         </li>
 
-
+                        @* Só permitir para o role 'Funcionario' *@
                         @if (User.IsInRole("Funcionario"))
                         {
                             <li style="border:2px solid #ffffff">
@@ -62,10 +62,21 @@
                             </li>
                         }
 
+                        @* Permite mostrar estes dois link ou navegador para os utilizadores autenticados e o tipo role 'Administrador' *@
                         @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
                         {
-                            <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                            <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                            <li style="border:2px solid #ffffff">
+                                <button class="btn btn-info">
+                                    <img src="~/Content/ImagensUtilizadores/Mariano_Freitas.png" width="40" height="40" />
+                                    @Html.ActionLink("Roles Admin", "Index", "RolesAdmin")
+                                </button>
+                            </li>
+                            <li style="border:2px solid #ffffff">
+                                <button class="btn btn-info">
+                                    <img src="~/Content/ImagensUtilizadores/Manuel_Pinto.png" width="40" height="40" />
+                                    @Html.ActionLink("Utilizadores Autenticado", "Index", "UsersAdmin")
+                                </button>
+                            </li>
                         }
                     </ul>
                     @Html.Partial("_LoginPartial")
@@ -73,6 +84,7 @@
             </div>
         </nav>
     </div>
+    @* O render body ou seja o corpo do browser ou aplicação *@
     <div class="container body-content">
         @RenderBody()
     </div>

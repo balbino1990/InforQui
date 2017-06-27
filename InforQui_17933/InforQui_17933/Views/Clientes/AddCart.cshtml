@@ -1,7 +1,61 @@
-﻿
+﻿@model InforQui_17933.Models.Produtos
+
 @{
-    ViewBag.Title = "AddCart";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>AddCart</h2>
+<h2>Detalhes</h2>
 
+<div>
+    <h4>Donos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+        <dd>
+            @Html.Display("Quantidade")
+        </dd>
+
+    </dl>
+</div>
+
+@* listar os dados dos ANIMAIS do Dono *@
+<div>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Sub Total</th>
+        </tr>
+        @foreach (var produto in Model.ListaComprasProdutos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.ProdutoID)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Nome) 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => produto.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Preco * produto.Quantidade)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ProdutoID }) |
+    @Html.ActionLink("Regressar à Listagem", "Index")
+</p>

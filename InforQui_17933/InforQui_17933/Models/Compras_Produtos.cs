@@ -38,5 +38,6 @@ namespace InforQui_17933.Models
         public int ProdutoFK { get; set; }
         //Relacionamento entre a tabela Produto com a tabela Compras_Produtos
         public Produtos Produto { get; set; }
+
     }
 }

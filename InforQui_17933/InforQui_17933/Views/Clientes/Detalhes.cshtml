@@ -49,9 +49,15 @@
     <button class="btn-secondary">
         @Html.ActionLink("Volta para a lista dos produtos", "Index")
     </button>
-    <button class="btn-info">
-        @Html.ActionLink("Adicionar Carrinho", "AddCart", new { id = Model.ProdutoID })
-    </button>
+    
+    @* Este botão só vai disponivel para os utilizadores autenticados *@
+    @if (Request.IsAuthenticated)
+    {
+        <button class="btn-info">
+            @Html.ActionLink("Adicionar Carrinho", "AddCart", new { id = Model.ProdutoID })
+        </button>
+    }
+   
 </div>
 
 <br />

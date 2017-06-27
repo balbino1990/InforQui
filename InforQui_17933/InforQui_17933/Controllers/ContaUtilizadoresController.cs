@@ -43,6 +43,18 @@ namespace InforQui_17933.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            // recuperar o 'cookie'
+            HttpCookie aCookie = HttpContext.Request.Cookies.Get("ExemploCookies");
+
+            if (aCookie != null)
+            {
+                // se existe 'cookie', recuperam-se os dados associados ao 'cookie'
+                // recuperar o nome do "tipo de transporte"
+                ViewBag.Transporte = aCookie.Values["Transporte"];
+                // e a data da última visita
+                ViewBag.UltimaVisita = aCookie.Values["UltimaVisita"];
+            }
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -63,7 +75,7 @@ namespace InforQui_17933.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl, string tipoTransporte)
         {
             if (!ModelState.IsValid)
             {
@@ -72,20 +84,46 @@ namespace InforQui_17933.Controllers
 
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+
+            try
             {
-                case SignInStatus.Success:
-                    return RedirectToAction("Index", "Clientes");
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                if (!string.IsNullOrEmpty(tipoTransporte))
+                {
+                    // se foi escolhido um meio de transporte...
+                    // criar o 'cookie'
+                    HttpCookie aCookie = new HttpCookie("ExemploCookies");
+                    aCookie.Values["Transporte"] = tipoTransporte;
+                    aCookie.Values["UltimaVisita"] = DateTime.Now.ToString();
+                    aCookie.Expires = DateTime.Now.AddSeconds(120);
+                    //	escreve o cookie no disco
+                    Response.Cookies.Add(aCookie);
+
+
+                    var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+                    switch (result)
+                    {
+                        case SignInStatus.Success:
+                            return RedirectToAction("Index", "Clientes");
+                        case SignInStatus.LockedOut:
+                            return View("Lockout");
+                        case SignInStatus.RequiresVerification:
+                            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
+                        case SignInStatus.Failure:
+                        default:
+                            ModelState.AddModelError("", "Invalid login attempt.");
+                            return View(model);
+
+                    }
+                }
             }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Ocorreu um erro na gravação do Cookie...");
+            }
+
+            return View(model);
+
+
         }
 
 

@@ -12,12 +12,17 @@ using System.Collections.Generic;
 namespace InforQui_17933.Controllers
 {
     [Authorize(Roles = "Administrador")]
+
+    //Criar uma classe RolesAdmin que herda do classe controller
     public class RolesAdminController : Controller
     {
+        //Construtor da classe 'RolesAdmin' sem argumentos
         public RolesAdminController()
         {
         }
 
+        //Construtor da classe RolesAdmin com argumento: 'objeto userManager da classe ApplicationUserManager e
+        //o objeto roleManager da classe ApplicationRoleManager'
         public RolesAdminController(ApplicationUserManager userManager,
             ApplicationRoleManager roleManager)
         {
@@ -25,26 +30,32 @@ namespace InforQui_17933.Controllers
             RoleManager = roleManager;
         }
 
+        //Criar os objetos privados que instanciar com as classe ApplicationUserManager
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
+            //Criar o metodo get
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
+            //criar o metodo set
             set
             {
                 _userManager = value;
             }
         }
 
+        //Criar os objetos privados que instanciar com as classe ApplicationRoleManager
         private ApplicationRoleManager _roleManager;
         public ApplicationRoleManager RoleManager
         {
+            //Criar o metodo get
             get
             {
                 return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
             }
+            //criar o metodo set com tipo 'privado'
             private set
             {
                 _roleManager = value;
@@ -67,20 +78,24 @@ namespace InforQui_17933.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var role = await RoleManager.FindByIdAsync(id);
-            // Get the list of Users in this Role
+            // Buscar a lista dos utilizadores neste Role ou seja
+            //criar o novo variavel para referenciar com a lista dos utilizadores
             var users = new List<ApplicationUser>();
 
-            // Get the list of Users in this Role
+            //Vai listar para cada utilizador que está instanciado com a classe UserManager
             foreach (var user in UserManager.Users.ToList())
             {
+                //Se o utilizador está na RoleAsync
                 if (await UserManager.IsInRoleAsync(user.Id, role.Name))
                 {
+                    //então adicionar para a lista dos Roles
                     users.Add(user);
                 }
             }
 
             ViewBag.Users = users;
             ViewBag.UserCount = users.Count();
+            //retornar uma lista dos RolesAsync
             return View(role);
         }
 
@@ -96,6 +111,7 @@ namespace InforQui_17933.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(RoleViewModel roleViewModel)
         {
+            //Se o modelo está valido
             if (ModelState.IsValid)
             {
                 var role = new IdentityRole(roleViewModel.Name);

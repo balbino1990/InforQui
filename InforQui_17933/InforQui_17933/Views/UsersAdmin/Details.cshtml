@@ -1,13 +1,12 @@
 ﻿@model InforQui_17933.Models.ApplicationUser
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Details.</h2>
+<h4>Details dos utilizadores</h4>
 
 <div>
-    <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -18,11 +17,11 @@
         </dd>
     </dl>
 </div>
-<h4>List of roles for this user</h4>
+<h5>Lista dos utilizadores</h5>
 @if (ViewBag.RoleNames.Count == 0)
 {
     <hr />
-    <p>No roles found for this user.</p>
+    <p>Não há utilizador que associa a este role</p>
 }
 
 <table class="table">
@@ -37,8 +36,8 @@
     }
 </table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Regressar para a lista", "Index")
 </p>
 
 

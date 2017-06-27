@@ -67,8 +67,6 @@ namespace InforQui_17933.Models
 
         //descrever as tabelas que estão na base de dados
 
-        //tabela de Utilizadores
-        public virtual DbSet<Utilizadores> Utilizadores { get; set; }
         //tabela de Produtos
         public virtual DbSet<Produtos> Produtos { get; set; }
         //tabela de Compras_Produtos
